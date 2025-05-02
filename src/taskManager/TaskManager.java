@@ -5,10 +5,6 @@ import java.util.List;
 
 public interface TaskManager {
 
-    HashMap<Integer, Task> tasks = new HashMap<>();
-    HashMap<Integer, Epic> epics = new HashMap<>();
-    HashMap<Integer, SubTask> subTasks = new HashMap<>();
-
     void addTask(Task task);
 
     void addEpic(Epic epic);
@@ -33,7 +29,6 @@ public interface TaskManager {
 
     SubTask getSubTaskById(int subTaskId);
 
-    //f) удаление по идентификатору
     void deleteTaskById(int taskId);
 
     void deleteEpicById(int epicId);
@@ -45,4 +40,6 @@ public interface TaskManager {
     void updateEpic(Epic epic);
 
     void updateSubTask(SubTask subTask);
+
+    List<Task> getHistory();
 }
