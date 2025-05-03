@@ -5,13 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InMemoryTaskManager implements TaskManager{
+public class InMemoryTaskManager implements TaskManager {
 
     int nextId = 1;
 
-    private final Map<Integer, Task> tasks     = new HashMap<>();
-    private final Map<Integer, Epic>     epics     = new HashMap<>();
-    private final Map<Integer, SubTask>  subTasks  = new HashMap<>();
+    private final Map<Integer, Task> tasks = new HashMap<>();
+    private final Map<Integer, Epic> epics = new HashMap<>();
+    private final Map<Integer, SubTask> subTasks = new HashMap<>();
 
     private HistoryManager historyManager = Managers.getDefaultHistory();
 
@@ -64,7 +64,6 @@ public class InMemoryTaskManager implements TaskManager{
 
         for (Epic t : epics.values()) {
             allEpics.add(t);
-
         }
         return allEpics;
     }
@@ -75,7 +74,6 @@ public class InMemoryTaskManager implements TaskManager{
 
         for (SubTask t : subTasks.values()) {
             allSubTasks.add(t);
-
         }
         return allSubTasks;
     }
@@ -159,9 +157,10 @@ public class InMemoryTaskManager implements TaskManager{
 
     @Override
     public void updateSubTask(SubTask subTask) {
-        subTask.setId(nextId++);
+        if(!subTasks.containsKey(subTask.getId())){
+            throw new IllegalArgumentException("Subtask не найден");
+        }
         subTasks.put(subTask.getId(), subTask);
-
         Epic epic = epics.get(subTask.getEpicId());
         updateEpicStatus(epic);
     }
