@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        InMemoryTaskManager taskManager = new InMemoryTaskManager();
+        TaskManager taskManager = Managers.getDefault();
         Task task1 = new Task(0, "Купить гараж", "Купить гараж в Новосибирске", TaskStatus.NEW);
         taskManager.addTask(task1);
 
