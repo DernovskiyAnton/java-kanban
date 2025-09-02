@@ -2,7 +2,6 @@ package taskmanager;
 
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.Objects;
 
 @Getter
@@ -13,16 +12,21 @@ public class Task {
     private String description;
     private TaskStatus status;
 
-    @Override
-    public String toString() {
-        return "Task{" + "id=" + id + ", name='" + name + '\'' + ", description='" + description + '\'' + ", status=" + status + '}';
-    }
-
-    protected Task(int id, String name, String description, TaskStatus status) {
+    public Task(int id, String name, String description, TaskStatus status) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.status = status;
+    }
+
+    public Task(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" + "id=" + id + ", name='" + name + '\'' + ", description='" + description + '\'' + ", status=" + status + '}';
     }
 
     @Override

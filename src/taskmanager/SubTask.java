@@ -1,5 +1,10 @@
 package taskmanager;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class SubTask extends Task {
     private int epicId;
 
@@ -13,9 +18,5 @@ public class SubTask extends Task {
         return "SubTask{" +
                 "epicId=" + epicId +
                 '}';
-    }
-
-    public int getEpicId() {
-        return epicId;
     }
 }
