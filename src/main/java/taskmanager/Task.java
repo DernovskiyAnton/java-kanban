@@ -1,4 +1,4 @@
-package taskmanager;
+package main.java.taskmanager;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package taskmanager;
+package main.java.taskmanager;
 
 public class SubTask extends Task {
     private int epicId;
