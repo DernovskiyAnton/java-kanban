@@ -14,7 +14,7 @@ public class Main {
         Epic epic1 = new Epic(0, "Построить дом", "Построить дом в пригороде Новосибирска", TaskStatus.NEW);
         taskManager.addEpic(epic1);
 
-        SubTask subTask1 = new SubTask(3,0, "Найти риэлтора", "Нужен хороший риэлтор", TaskStatus.NEW);
+        SubTask subTask1 = new SubTask(3, 0, "Найти риэлтора", "Нужен хороший риэлтор", TaskStatus.NEW);
         taskManager.addSubTask(subTask1);
 
     }

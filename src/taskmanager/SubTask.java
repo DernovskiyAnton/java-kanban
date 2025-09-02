@@ -1,6 +1,6 @@
 package taskmanager;
 
-public class SubTask extends Task{
+public class SubTask extends Task {
     private int epicId;
 
     public SubTask(int epicId, int id, String name, String description, TaskStatus status) {
