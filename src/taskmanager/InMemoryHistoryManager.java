@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InMemoryHistoryManager implements HistoryManager{
+public class InMemoryHistoryManager implements HistoryManager {
 
     private static class Node {
         Task task;
@@ -29,13 +29,13 @@ public class InMemoryHistoryManager implements HistoryManager{
     public List<Task> getHistory() {
         List<Task> history = new ArrayList<>();
         Node current = head;
-        while(current != null) {
+        while (current != null) {
             history.add(current.task);
             current = current.next;
         }
         return history;
-
     }
+
     @Override
     public void add(Task task) {
         if (watchedTasks.size() >= ARRAY_SIZE) {
