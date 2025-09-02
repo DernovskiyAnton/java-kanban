@@ -1,5 +1,6 @@
 package taskmanager;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,14 @@ public class InMemoryHistoryManager implements HistoryManager{
 
     @Override
     public List<Task> getHistory() {
-        return watchedTasks;
+        List<Task> history = new ArrayList<>();
+        Node current = head;
+        while(current != null) {
+            history.add(current.task);
+            current = current.next;
+        }
+        return history;
+
     }
     @Override
     public void add(Task task) {
