@@ -157,7 +157,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void updateSubTask(SubTask subTask) {
-        if(!subTasks.containsKey(subTask.getId())){
+        if (!subTasks.containsKey(subTask.getId())){
             throw new IllegalArgumentException("Subtask не найден");
         }
         subTasks.put(subTask.getId(), subTask);
