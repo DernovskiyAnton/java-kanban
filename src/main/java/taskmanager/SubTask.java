@@ -1,10 +1,18 @@
-package taskManager;
+package main.java.taskmanager;
 
-public class SubTask extends Task{
+public class SubTask extends Task {
     private int epicId;
 
     public SubTask(int epicId, int id, String name, String description, TaskStatus status) {
         super(id, name, description, status);
+        this.epicId = epicId;
+    }
+
+    public int getEpicId() {
+        return epicId;
+    }
+
+    public void setEpicId(int epicId) {
         this.epicId = epicId;
     }
 
@@ -13,9 +21,5 @@ public class SubTask extends Task{
         return "SubTask{" +
                 "epicId=" + epicId +
                 '}';
-    }
-
-    public int getEpicId() {
-        return epicId;
     }
 }
