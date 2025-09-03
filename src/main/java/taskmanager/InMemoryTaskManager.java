@@ -1,4 +1,4 @@
-package taskManager;
+package main.java.taskmanager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -157,7 +157,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void updateSubTask(SubTask subTask) {
-        if(!subTasks.containsKey(subTask.getId())){
+        if (!subTasks.containsKey(subTask.getId())) {
             throw new IllegalArgumentException("Subtask не найден");
         }
         subTasks.put(subTask.getId(), subTask);
@@ -170,24 +170,37 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     private void updateEpicStatus(Epic epic) {
-        int statusNew = 0;
-        int statusDone = 0;
+        List<Integer> subTaskIds = epic.getSubTaskIds();
 
-        for (Integer itemId : epic.getSubTaskIds()) {
-            TaskStatus anItem = subTasks.get(itemId).getStatus();
-            if (anItem.equals(TaskStatus.IN_PROGRESS)) {
-                epic.setStatus(TaskStatus.IN_PROGRESS);
-            } else if (anItem.equals(TaskStatus.NEW)) {
-                statusNew++;
-            } else {
-                statusDone++;
+        if (subTaskIds.isEmpty()) {
+            epic.setStatus(TaskStatus.NEW);
+            return;
+        }
+
+        boolean hasInProgress = false;
+        boolean hasNew = false;
+
+        for (Integer itemId : subTaskIds) {
+            TaskStatus status = subTasks.get(itemId).getStatus();
+            switch (status) {
+                case IN_PROGRESS:
+                    hasInProgress = true;
+                    break;
+                case NEW:
+                    hasNew = true;
+                    break;
+                case DONE:
+                    break;
             }
         }
-        if (statusDone == epic.getSubTaskIds().size()) {
-            epic.setStatus(TaskStatus.DONE);
-        } else {
+
+        if (hasInProgress) {
+            epic.setStatus(TaskStatus.IN_PROGRESS);
+        } else if (hasNew) {
             epic.setStatus(TaskStatus.NEW);
+        } else {
+            // Все подзадачи DONE
+            epic.setStatus(TaskStatus.DONE);
         }
     }
-
 }

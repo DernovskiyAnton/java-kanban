@@ -1,4 +1,4 @@
-package taskManager;
+package main.java.taskmanager;
 
 public enum TaskStatus {
     NEW,
