@@ -20,6 +20,9 @@ public class Task {
         this.description = description;
     }
 
+    public Task(String name, String description, TaskStatus status) {
+    }
+
     public int getId() {
         return id;
     }
