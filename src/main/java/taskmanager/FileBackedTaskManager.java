@@ -215,7 +215,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
 
         switch (type) {
             case TASK:
-                task = new Task(name, description, status);
+                task = new Task(id, name, description, status);
                 task.setId(id);
                 break;
             case EPIC:
