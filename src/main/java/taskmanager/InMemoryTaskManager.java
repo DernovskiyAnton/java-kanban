@@ -192,6 +192,11 @@ public class InMemoryTaskManager implements TaskManager {
         return historyManager.getHistory();
     }
 
+    @Override
+    public List<Task> getPrioritizedTasks() {
+        return new ArrayList<>(prioritizedTasks);
+    }
+
     protected void updateEpicTime(Epic epic) {
         List<SubTask> epicSubTasks = epic.getSubTaskIds().stream()
                 .map(subTasks::get)
