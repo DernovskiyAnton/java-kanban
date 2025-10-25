@@ -130,7 +130,7 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public Epic getEpicById(int epicId) {
         if (epics.containsKey(epicId)) {
-            historyManager.add(tasks.get(epicId));
+            historyManager.add(epics.get(epicId));
             return epics.get(epicId);
         }
         System.out.println("Эпика с идентификатором " + epicId + " не существует!");
@@ -140,7 +140,7 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public SubTask getSubTaskById(int subTaskId) {
         if (subTasks.containsKey(subTaskId)) {
-            historyManager.add(tasks.get(subTaskId));
+            historyManager.add(subTasks.get(subTaskId));
             return subTasks.get(subTaskId);
         }
         System.out.println("Подзадачи с идентификатором " + subTaskId + " не существует!");
